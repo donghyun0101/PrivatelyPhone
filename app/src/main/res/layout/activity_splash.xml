@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="16dp"
+              android:gravity="center"
+              android:background="@color/colorPrimary">
+
+    <TextView
+        android:text="이 앱은 근접센서를 이용한 몰래 폰하기 앱 입니다.\n근접센서는 사진에서 보시다시피\n저 위치에 있습니다.\n\n이 앱은 전원버튼을 누르지 않아도\n저 부분에 물체를 가까이 가져다대거나,\n뒤집으면 전원버튼을 짧게누른것처럼\n화면이 꺼지고, 무음모드가 됩니다."
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/sensorintro"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:text="먼저 화면끄기기능을 활용하기 위해서는\n장치관리자를 허용시키셔야 합니다.\n\n화면끄기 이외에 다른 것은 실행되지 않으니 걱정하지 않으셔도 됩니다."
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/device_set"
+            android:text="모두 읽었으며, 장치관리자 허용하러 가기"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            style="?android:attr/buttonStyleSmall"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>
