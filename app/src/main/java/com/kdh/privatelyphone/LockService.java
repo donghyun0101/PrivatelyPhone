@@ -21,8 +21,8 @@ import android.util.Log;
 
 public class LockService extends Service implements SensorEventListener
 {
-    private static SharedPreferences pref = null;
-    private SharedPreferences.Editor editor;
+    private static SharedPreferences off = null, manner = null;
+    private SharedPreferences.Editor editor_off, editor_manner;
 
     private SensorManager mSensorManager;
     private Sensor mProximity;
@@ -33,8 +33,10 @@ public class LockService extends Service implements SensorEventListener
     @Override
     public void onCreate()
     {
-        pref = LockService.this.getSharedPreferences("kdh_lock_service", 0);
-        editor = pref.edit();
+        off = LockService.this.getSharedPreferences("kdh_lock_service", 0);
+        manner = LockService.this.getSharedPreferences("kdh_manner_service", 0);
+        editor_off = off.edit();
+        editor_manner = manner.edit();
         super.onCreate();
     }
 
@@ -46,8 +48,8 @@ public class LockService extends Service implements SensorEventListener
         mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         mSensorManager.registerListener(this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
 
-        editor.putInt("kdh_lock_service", 1);
-        editor.commit();
+        editor_off.putInt("kdh_lock_service", 1);
+        editor_off.commit();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -63,8 +65,10 @@ public class LockService extends Service implements SensorEventListener
     {
         // TODO Auto-generated method stub
         mSensorManager.unregisterListener(this);
-        editor.putInt("kdh_lock_service", 0);
-        editor.commit();
+        editor_off.putInt("kdh_lock_service", 0);
+        editor_manner.putInt("kdh_manner_service", 0);
+        editor_off.commit();
+        editor_manner.commit();
         super.onDestroy();
     }
 
@@ -87,8 +91,11 @@ public class LockService extends Service implements SensorEventListener
             mDPM = (DevicePolicyManager) LockService.this.getSystemService(Context.DEVICE_POLICY_SERVICE);
             mDPM.lockNow();
 
-            am = (AudioManager) LockService.this.getSystemService(Context.AUDIO_SERVICE);
-            am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            if(manner.getInt("kdh_manner_service", 0) == 1)
+            {
+                am = (AudioManager) LockService.this.getSystemService(Context.AUDIO_SERVICE);
+                am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+            }
         }
     }
 }

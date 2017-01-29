@@ -23,6 +23,7 @@
 
     <View
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryDark"
         android:layout_height="2dp"/>
@@ -34,8 +35,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv"
-            android:text="근접센서로 화면끄기,\n무음모드 기능"
+            android:text="뒤집어서 화면끄기"
             android:textColor="#ffffff"
             android:gravity="center|left"
             android:textStyle="bold"
@@ -47,7 +47,32 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/service_btn"/>
+            android:id="@+id/service_off_btn"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv"
+            android:text="무음모드도 같이 실행"
+            android:textColor="#d2d2d2"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <Switch
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/service_manner_btn"
+            android:enabled="false"/>
 
     </RelativeLayout>
 
