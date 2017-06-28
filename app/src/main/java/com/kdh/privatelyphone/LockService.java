@@ -13,6 +13,8 @@ import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.os.IBinder;
 import android.os.PowerManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 
 /**
